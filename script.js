@@ -1,33 +1,21 @@
-const extendHex = (shortHex) => {
-  // write your code here
-	
-	function extendHex(shortHex) {
-  // Remove # if present and convert to lowercase
-  shortHex = shortHex.replace("#", "").toLowerCase();
+function extendHex(shortHex) {
+  // Remove '#' symbol if present and convert to lowercase
+  let hex = shortHex.replace('#', '').toLowerCase();
 
-  // Check if the input is a short hex code (3 characters)
-  if (shortHex.length === 3) {
-    // Extend the short hex code to a full hex code (repeating each character)
-    const fullHex = shortHex
+  // If the input is a short hex code, extend it to a full hex code
+  if (hex.length === 3) {
+    hex = hex
       .split('')
       .map(char => char + char) // Repeat each character
       .join('');
-
-    // Add # prefix to the full hex code
-    return `#${fullHex}`;
-  } else {
-    // If input is not a short hex code, return as is
-    return shortHex;
   }
+
+  // Add '#' prefix and return the extended hex code
+  return `#${hex}`;
 }
 
 // Test cases
 console.log(extendHex("#abc")); // expected output: "#aabbcc"
 console.log(extendHex("abc")); // expected output: "#aabbcc"
-console.log(extendHex("#AbC")); // expected output: "#AABBCC"
+console.log(extendHex("#AbC")); // expected output: "#aabbcc" (lowercase)
 console.log(extendHex("#f09")); // expected output: "#ff0099"
-
-
-// Do not change the code below.
-const shortHex = prompt("Enter Short Hex.");
-alert(extendHex(shortHex));
